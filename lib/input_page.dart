@@ -5,11 +5,15 @@ import 'Card.dart';
 import 'TextWidget.dart';
 import 'constants.dart';
 import 'package:syncfusion_flutter_sliders/sliders.dart';
-
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 enum Gender {
   male,
   female
+}
+enum Button {
+  plus,
+  minus
 }
 
 class InputPage extends StatefulWidget {
@@ -20,7 +24,9 @@ class InputPage extends StatefulWidget {
 class _InputPageState extends State<InputPage> {
   Gender selectedGender;
   int height = 150;
-  double _value = 150.0;
+  int weight = 50;
+  int age = 25;
+  //double _value = 150.0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -138,16 +144,31 @@ class _InputPageState extends State<InputPage> {
                                 fontSize: 25,
                                 color: textColor,
                               ),),
-                              Row(
+                              Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  Text("50", style: numberTextStyle,),
+                                  Text(weight.toString(), style: numberTextStyle,),
                                 ],
                               ),
                               Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                 children: [
-                                  Text("-", style: numberTextStyle,),
-                                  Text("+", style: numberTextStyle,)
+                                  RoundIconButton(
+                                    icon: Icons.remove,
+                                    onPress: (){
+                                      setState((){
+                                        weight--;
+                                      });
+                                    },),
+                                  //SizedBox(width: 15,),
+                                  RoundIconButton(
+                                    icon: Icons.add,
+                                    onPress: (){
+                                      setState((){
+                                        weight++;
+                                      });
+                                    },
+                                  ),
                                 ],
                               )
                           ],
@@ -164,10 +185,25 @@ class _InputPageState extends State<InputPage> {
                                 fontSize: 25,
                                 color: textColor,
                               ),),
-                              Row(
+                              Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  Text("25", style: numberTextStyle,)
+                                  Text(age.toString(), style: numberTextStyle,)
+                                ],
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  RoundIconButton(icon: Icons.remove, onPress: (){
+                                    setState((){
+                                      age--;
+                                    });
+                                  }),
+                                  RoundIconButton(icon: Icons.add, onPress: (){
+                                    setState((){
+                                      age++;
+                                    });
+                                  })
                                 ],
                               )
                             ],
@@ -196,6 +232,25 @@ class _InputPageState extends State<InputPage> {
   }
 }
 
+class RoundIconButton extends StatelessWidget {
+  final IconData icon;
+  final Function onPress;
+  RoundIconButton({@required this.icon, @required this.onPress});
+  @override
+  Widget build(BuildContext context) {
+    return RawMaterialButton(
+      child: Icon(icon, size: 30, color: textColor,),
+      onPressed: onPress,
+      elevation: 6.0,
+      constraints: BoxConstraints.tightFor(
+        width: 56.0,
+        height: 56.0,
+      ),
+      shape: CircleBorder(),
+      fillColor: backgroundColor,
+    );
+  }
+}
 
 
 
