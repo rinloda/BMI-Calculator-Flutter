@@ -6,7 +6,8 @@ import 'TextWidget.dart';
 import 'constants.dart';
 import 'package:syncfusion_flutter_sliders/sliders.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
+import 'calculator.dart';
+import 'package:bmi_calculator/result_page.dart';
 enum Gender {
   male,
   female
@@ -219,11 +220,24 @@ class _InputPageState extends State<InputPage> {
               Flexible(
                 flex: 1,
                 fit: FlexFit.loose,
-                child: Container(
-                    height: 100,
-                    width: double.infinity,
-                    child: CardWidget(colour: activeColor,
-                    cardChild: TextWidget(text: "Let's begin", textColor: backgroundColor,),)
+                child: GestureDetector(
+                  onTap: (){
+                    CalculatorBrain calc = CalculatorBrain(height: height, weight: weight);
+
+                    print(calc.calculatorBMI());
+                    print(calc.getResult());
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => ResultPage(
+                      bmiResult: calc.calculatorBMI(),
+                      resultText: calc.getResult(),
+                    ))
+                    );
+                  },
+                  child: Container(
+                      height: 100,
+                      width: double.infinity,
+                      child: CardWidget(colour: activeColor,
+                      cardChild: TextWidget(text: "Let's begin", textColor: backgroundColor,),)
+                  ),
                 ),
               )
             ],
