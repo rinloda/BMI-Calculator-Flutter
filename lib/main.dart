@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-//import 'package:hexcolor/hexcolor.dart';
-import 'input_page.dart';
-import 'package:bmi_calculator/result_page.dart';
-//import 'package:syncfusion_flutter_sliders/sliders.dart';
-import 'calculator.dart';
+import 'screens/input_page.dart';
+import 'package:bmi_calculator/screens/result_page.dart';
+import 'compoments/calculator.dart';
 
 void main() => runApp(BMICalculator());
 
