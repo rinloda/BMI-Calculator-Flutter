@@ -11,9 +11,9 @@ dependencies:
     sdk: flutter
 
   cupertino_icons: ^0.1.2
-  syncfusion_flutter_sliders: ^19.1.56-beta
+  syncfusion_flutter_sliders: ^20.1.60
   font_awesome_flutter: ^10.1.0
-  syncfusion_flutter_gauges: ^19.1.56-beta
+  syncfusion_flutter_gauges: ^20.1.60
 dev_dependencies:
   flutter_test:
     sdk: flutter

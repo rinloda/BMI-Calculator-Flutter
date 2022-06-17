@@ -1,16 +1,13 @@
-package co.appbrewery.bmicalculator;
+package co.appbrewery.clima;
 
-import io.flutter.embedding.android.FlutterActivity;
+import android.os.Bundle;
+import io.flutter.app.FlutterActivity;
+import io.flutter.plugins.GeneratedPluginRegistrant;
 
 public class MainActivity extends FlutterActivity {
-  @Override
-    public void configureFlutterEngine(@NonNull FlutterEngine flutterEngine) {
-            GeneratedPluginRegistrant.registerWith(flutterEngine);
-            new MethodChannel(flutterEngine.getDartExecutor().getBinaryMessenger(), CHANNEL)
-                            .setMethodCallHandler(
-                                (call, result) -> {
-                                      // Your existing code
-                                      }
-                            );
-        }
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        GeneratedPluginRegistrant.registerWith(this);
+    }
 }
